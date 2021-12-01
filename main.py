@@ -1,3 +1,4 @@
+import tui
 """
 This module is responsible for the overall program flow. It controls how the user interacts with the
 program and how the program behaves. It uses the other modules to interact with the user, carry out
@@ -11,7 +12,9 @@ Note:   any user input/output should be done using the appropriate functions in 
 
 # Task 10: Import required modules
 # TODO: Your code here
+tui.welcome()
 
+"""
 # Task 11: Create an empty list named 'covid_records'.
 # This will be used to store the data read from the source data file.
 # TODO: Your code here
@@ -119,3 +122,4 @@ def run():
 
 if __name__ == "__main__":
     run()
+"""

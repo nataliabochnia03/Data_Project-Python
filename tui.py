@@ -20,6 +20,7 @@ def welcome():
     """
     # TODO: Your code here
     pass
+    print("Simple message")
 
 
 def error(msg):
@@ -193,3 +194,4 @@ def display_records():
     :return: Does not return anything
     """
     # TODO: Your code here
+welcome()
