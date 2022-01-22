@@ -20,9 +20,12 @@ def welcome():
     """
     # TODO: Your code here
     pass
-    print("-----------------------")
-    print("COVID-19 (January) Data")
-    print("-----------------------")
+    #print("-----------------------")
+    #print("COVID-19 (January) Data")
+    #print("-----------------------")
+    #I found a nicer looking solution for this one, by using the "len" function
+    title = 'COVID-19 (January) Data'
+    print('-'*len(title) ,'\n'+title ,'\n'+'-'*len(title) )
 
 
 def error(msg):
@@ -37,7 +40,9 @@ def error(msg):
     :return: does not return anything
     """
     # TODO: Your code here
-    pass
+    print(f"Error! {msg}")
+
+   #pass
 
 
 def progress(operation, value):
@@ -59,6 +64,7 @@ def progress(operation, value):
     :return: does not return anything
     """
     # TODO: Your code here
+    if value == 0
     pass
 
 
