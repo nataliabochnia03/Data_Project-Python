@@ -23,7 +23,8 @@ def welcome():
     #print("-----------------------")
     #print("COVID-19 (January) Data")
     #print("-----------------------")
-    #I found a nicer looking solution for this one, by using the "len" function
+    #I found a nicer looking solution for this one, by using the "len" function, which returns the number of characters in the string
+
     title = 'COVID-19 (January) Data'
     print('-'*len(title) ,'\n'+title ,'\n'+'-'*len(title) )
 
@@ -40,6 +41,7 @@ def error(error_msg):
     :return: does not return anything
     """
     # TODO: Your code here
+    # formatted string literals (f-strings)-one of the way to format text string.
     print(f"Error! {error_msg}")
     pass
 
@@ -63,6 +65,7 @@ def progress(operation, value):
     :return: does not return anything
     """
     # TODO: Your code here
+
     if value == 0:
         status = 'has started'
     elif value == 100:
@@ -115,7 +118,9 @@ def menu(variant=0):
         print("[1] All Data", "[2] Data for Specific Country/Region")
     else:
         print("Error! Option not found.")
-    #Trying newly learned "try", "expect" statement. I unnecessary complicated everything for myself by doing this.This code kind of works but it doesn't display the proper response.
+    #Trying newly learned "try", "expect" statement.
+    #At this point unnecessary complicated everything for myself by doing this.
+    #This code kind of works but it doesn't display the proper response.
     # menu = []
     # if variant == 0:
     #     menu = ['[1] Process Data', '[2] Visualise Data', '[3] Export Data', '[4] Exit']
@@ -136,7 +141,7 @@ def menu(variant=0):
     # #     selection = int(selection)
     # # except:
     # #     print('Invalid Entry For Selection in Menu.')
-    # #     return
+    # #
     # # if selection >= 1 and selection <= len(menu):
     # #     return selection
     # # else:
@@ -147,7 +152,7 @@ def menu(variant=0):
     # except:
     #     pass
     #
-    # return selection
+    #
 
 
     pass
@@ -181,7 +186,7 @@ def serial_number():
     :return: the serial number for a record
     """
     # TODO: Your code here
-    serial_n = int(input("Please enter the serial number: "))
+    serial_n = int(input("Please enter the serial number: \n"))
     print(serial_n)
 
 
@@ -238,7 +243,7 @@ def display_record(record, cols=None):
     :return: Does not return anything
     """
     # TODO: Your code here
-    #I couldn't manage to completyl solve this task.
+
     # record = [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]
     # cols = [0,1,4]
     #
@@ -247,7 +252,7 @@ def display_record(record, cols=None):
     #
     # for i in range(len(record)):
     #     if i in cols:
-    #         cols.append(record[i])
+    #         cols.append(record)
     if cols == None:
         print(record)
         return

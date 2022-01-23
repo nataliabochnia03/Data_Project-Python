@@ -29,7 +29,7 @@ def run():
     # Task 12: Call the function welcome of the module 'tui'.
     # This will display our welcome message when the program is executed.
     # TODO: Your code here
-    tui.welcome()
+    welcome()
 
     # Task 13: Load the data.
     # - Use the appropriate function in the module 'tui' to display a message to indicate that the data loading
@@ -42,8 +42,9 @@ def run():
     progress("data", 0)
     file_name = "data//covid_19_data.csv"
     total_no_of_record = 0
-    #try-except statemens. Used for exception handeling. If no errors are found in the try block, control flow moves to the statements after the except block.
-    # If an error is found in the try block, the code moves on to the statements in the except block. Learned it on yt and W3schools and I really like this method as is very efficient.
+    #try-except statemens. "Used for exception handeling. If no errors are found in the try block, control flow moves to the statements after the except block.
+    #If an error is found in the try block, the code moves on to the statements in the except block." Sololearn, I also used this page to understand the working mechanism of this statement."https://www.w3schools.com/python/python_try_except.asp"
+    #This time I made it to use "try-except" statement properly and I am really glad about this, as it is something that was not coverd during our classes.
 
     try:
         f = open(file_name)
@@ -53,7 +54,7 @@ def run():
         #display "File Error, CSV File not Found"
         error("CSV File Not found")
         exit()
-    #I used with statement because it close the file automaticly
+    #with statement closing file automaticly, we don't need to use close() at the end.
     with open (file_name) as csv_file:
         #csv_reader = csv.reader(csv_file, end = ",")
         #csv_reader = csv.reader(csv_file.split(","))
@@ -65,7 +66,7 @@ def run():
             # while i > -1:
             # print(row)
             if i > -1:
-            # print(row)
+            #print(row)
             # exit()
             covid_records.append(
                 [int(row[0]), row[1], row[2], row[3], row[4], int(row[5]), int(row[6]), int(row[7])])
@@ -216,5 +217,5 @@ def run():
         pass  # can remove
 
 
-if __name__ == "__main__":
-    run()
+#if __name__ == "__main__":
+    #run()
