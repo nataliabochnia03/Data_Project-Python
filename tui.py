@@ -28,7 +28,7 @@ def welcome():
     print('-'*len(title) ,'\n'+title ,'\n'+'-'*len(title) )
 
 
-def error(msg):
+def error(error_msg):
     """
     Task 2: Display an error message.
 
@@ -40,9 +40,8 @@ def error(msg):
     :return: does not return anything
     """
     # TODO: Your code here
-    print(f"Error! {msg}")
-
-   #pass
+    print(f"Error! {error_msg}")
+    pass
 
 
 def progress(operation, value):
@@ -64,7 +63,13 @@ def progress(operation, value):
     :return: does not return anything
     """
     # TODO: Your code here
-    if value == 0
+    if value == 0:
+        status = 'has started'
+    elif value == 100:
+        status = 'has completed'
+    else:
+        status = f"is in progress({value}% completed)"
+    print(f"{operation} {status}")
     pass
 
 
@@ -99,6 +104,52 @@ def menu(variant=0):
     :return: nothing if invalid selection otherwise an integer for a valid selection
     """
     # TODO: Your code here
+    print("Choose one of the option: \n1 Process Data \n2 Visualise Data \n3 Export Data \n4 Exit")
+    variant = int(input())
+    if variant == 1:
+        print("[1] Record by Serial Number", "[2] Records by Observation Date", "[3] Group Records by Country/Region",
+              "[4] Summarise Records")
+    elif variant == 2:
+        print("[1] Country/Region Pie Chart", "[2] Observations Chart", "[3] Animated Summary")
+    elif variant == 3:
+        print("[1] All Data", "[2] Data for Specific Country/Region")
+    else:
+        print("Error! Option not found.")
+    #Trying newly learned "try", "expect" statement. I unnecessary complicated everything for myself by doing this.This code kind of works but it doesn't display the proper response.
+    # menu = []
+    # if variant == 0:
+    #     menu = ['[1] Process Data', '[2] Visualise Data', '[3] Export Data', '[4] Exit']
+    # elif variant == 1:
+    #     menu = ['[1] Record by Serial Number', '[2] Records by Observation Date', '[3] Group Records by Country/Region',
+    #             '[4] Summarise Records']
+    # elif variant == 2:
+    #     menu = ['[1] Country/Region Pie Chart', '[2] Observations Chart', '[3] Animated Summary']
+    # elif variant == 3:
+    #     menu = ['[1] All Data', '[2] Data for Specific Country/Region']
+    # else:
+    #     print('Internal Menu Error [Invalid Menu]')
+    #     return
+    #
+    # print(*menu, sep='\n')
+    # selection = input('Selection:')
+    # # try:
+    # #     selection = int(selection)
+    # # except:
+    # #     print('Invalid Entry For Selection in Menu.')
+    # #     return
+    # # if selection >= 1 and selection <= len(menu):
+    # #     return selection
+    # # else:
+    # #     print ('There is no option for this selection.')
+    # #     return
+    # try:
+    #     selection = int(selection)
+    # except:
+    #     pass
+    #
+    # return selection
+
+
     pass
 
 
@@ -116,6 +167,7 @@ def total_records(num_records):
     :return: Does not return anything
     """
     # TODO: Your code here
+    print(f"There are {num_records} records in the data set")
     pass
 
 
@@ -129,6 +181,7 @@ def serial_number():
     :return: the serial number for a record
     """
     # TODO: Your code here
+
     pass
 
 
@@ -202,4 +255,13 @@ def display_records():
     :return: Does not return anything
     """
     # TODO: Your code here
-welcome()
+
+#TESTS:
+#welcome()
+#error("Error message!")
+#progress(1,10)
+#progress(5,0)
+#progress(1,100)
+#menu(variant=0)
+#total_records(10)
+
