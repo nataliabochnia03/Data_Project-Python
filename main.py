@@ -131,6 +131,40 @@ def run():
         #       - Use the appropriate function in the module 'tui' to indicate that the summary
         #       process has completed.
         # TODO: Your code here
+        if menu0 == 1:
+            # processing data :
+            progress('Data Processing Operation', 0)
+            menu1 = menu(1)
+            # '[1] Record by Serial Number'
+            if menu1 == 1:
+                progress('record retrieval process', 0)
+                # fun call for process.py
+                display_record (get_record_by_serial_number(covid_records))
+                progress('record retrieval process', 100)
+
+            # '[2] Records by Observation Date'
+            if menu1 == 2:
+                progress('records retrieval process', 0)
+                # fun call for process.py
+                # fun call for tui.py
+                display_records (get_records_by_observation_dates(covid_records))
+                progress('records retrieval process', 100)
+
+            # '[3] Group Records by Country/Region
+            if menu1 == 3:
+                progress('grouping process', 0)
+                # fun call for process.py
+                # fun call for tui.py
+                display_records (get_records_grouped_by_country_region(covid_records))
+                progress('grouping process', 100)
+
+            # '[4] Summarise Records'
+            if menu1 == 4:
+                progress('summary process', 0)
+                # fun call for process.py
+                # fun call for tui.py
+                display_records (get_summary_of_records(covid_records))
+                progress('summary process', 100)
 
         # Task 21: Check if the user selected the option for visualising data.
         # If so, then do the following:
