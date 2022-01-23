@@ -12,8 +12,10 @@ Note:   any user input/output should be done using the appropriate functions in 
 
 # Task 10: Import required modules
 # TODO: Your code here
-import tui
 
+import csv
+from tui import *
+from process import *
 
 
 
@@ -37,13 +39,53 @@ def run():
     # - Use the appropriate functions in the module 'tui' to display a message to indicate how many records have
     # been loaded and that the data loading operation has completed.
     # TODO: Your code here
-    
+    progress("data", 0)
+    file_name = "data//covid_19_data.csv"
+    total_no_of_record = 0
+    #try-except statemens. Used for exception handeling. If no errors are found in the try block, control flow moves to the statements after the except block.
+    # If an error is found in the try block, the code moves on to the statements in the except block. Learned it on yt and W3schools and I really like this method as is very efficient.
+
+    try:
+        f = open(file_name)
+        total_no_of_record = sum(1 for line in f) - 1 #titles removed!
+        #print("Total Lines: ", total_no_of_record)
+    except:
+        #display "File Error, CSV File not Found"
+        error("CSV File Not found")
+        exit()
+    #I used with statement because it close the file automaticly
+    with open (file_name) as csv_file:
+        #csv_reader = csv.reader(csv_file, end = ",")
+        #csv_reader = csv.reader(csv_file.split(","))
+        #Using delimiter ="," statement to parse the line as comma-delimited
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        i = -1
+        for row in csv_reader:
+            # while True
+            # while i > -1:
+            # print(row)
+            if i > -1:
+            # print(row)
+            # exit()
+            covid_records.append(
+                [int(row[0]), row[1], row[2], row[3], row[4], int(row[5]), int(row[6]), int(row[7])])
+            progress('data loading', round((i / total_no_of_record) * 100, 2))
+            # += operator, equivalent to: i = i + 1
+            i += 1
+            progress('data loading', 100)
+
+            total_records(total_no_of_record)
+
+        # print('l:',len(covid_records))
+        # print(covid_records)
+        # return
 
     while True:
         # Task 14: Using the appropriate function in the module 'tui', display a menu of options
         # for the different operations that can be performed on the data (menu variant 0).
         # Assign the selected option to a suitable local variable
         # TODO: Your code here
+        menu0 = menu(0)
 
         # Task 15: Check if the user selected the option for processing data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data processing
