@@ -181,6 +181,9 @@ def serial_number():
     :return: the serial number for a record
     """
     # TODO: Your code here
+    serial_n = int(input("Please enter the serial number: "))
+    print(serial_n)
+
 
     pass
 
@@ -198,7 +201,16 @@ def observation_dates():
     """
     # TODO: Your code here
     pass
+    #I have been trying using a loop to ask to enter a data a certain amount of time and then display all of the storage data, but this code is simpler and working fine as well.
+    #.append method allow us to add input to the list.
 
+    dts = []
+    dat = input("Enter dates (dd/mm/yyyy):\n")
+    #another code that I tried and it kind of was working. I wanted to use .split() method
+    #dts = str(input("Enter dates (dd/mm/yyyy):")).split()
+    dts.append(dat)
+
+    print(dts)
 
 def display_record(record, cols=None):
     """
@@ -264,4 +276,6 @@ def display_records():
 #progress(1,100)
 #menu(variant=0)
 #total_records(10)
+#serial_number()
+observation_dates()
 
