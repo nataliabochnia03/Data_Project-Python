@@ -176,6 +176,21 @@ def run():
         # - Use the appropriate function in the module 'tui' to display a message to indicate that the
         # data visualisation operation has completed.
         # TODO: Your code here
+        #if menu0 ==2:
+        elif menu0 ==2:
+            progress('data visualisation operation', 0)
+            #fun call for tui.py
+            #'[1] Country/Region Pie Chart', '[2] Observations Chart', '[3] Animated Summary'
+            menu2 = menu(2)
+            #fun call for visual.py
+            if menu2 == 1:
+                pi_chart_conf_cases(get_summary_of_records(covid_records))
+            elif menu2 == 2:
+                pi_chart_top_5_death_countries(get_summary_of_records(covid_records))
+            elif menu == 3:
+                menu3 = menu(3)
+                #['[1]All Data', [2] Data for Specific Country/Region']
+
         
         # Task 25: Check if the user selected the option for exporting data.  If so, then do the following:
         # - Use the appropriate function in the module 'tui' to retrieve the type of data to be exported.
