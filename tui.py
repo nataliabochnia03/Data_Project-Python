@@ -238,10 +238,31 @@ def display_record(record, cols=None):
     :return: Does not return anything
     """
     # TODO: Your code here
+    #I couldn't manage to completyl solve this task.
+    # record = [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]
+    # cols = [0,1,4]
+    #
+    # if cols == None:
+    #     print(record)
+    #
+    # for i in range(len(record)):
+    #     if i in cols:
+    #         cols.append(record[i])
+    if cols == None:
+        print(record)
+        return
+        # return record
+    output = []
+    for i in range(len(record)):
+        if i in cols:
+            output.append(record[i])
+    print(output)
+    # return output
+    # pass
     pass
 
 
-def display_records():
+def display_records(records, cols=None):
     """
     Task 9: Display each record in the specified list of records.
     Only the data for the specified column indexes will be displayed.
@@ -267,6 +288,9 @@ def display_records():
     :return: Does not return anything
     """
     # TODO: Your code here
+    for record in records:
+        display_record(record, cols)
+
 
 #TESTS:
 #welcome()
@@ -277,5 +301,6 @@ def display_records():
 #menu(variant=0)
 #total_records(10)
 #serial_number()
-observation_dates()
+#observation_dates()
+
 
