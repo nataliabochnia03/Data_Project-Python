@@ -1,5 +1,5 @@
-import tui
-"""
+
+'''
 This module is responsible for the overall program flow. It controls how the user interacts with the
 program and how the program behaves. It uses the other modules to interact with the user, carry out
 processing, and for visualising information.
@@ -7,23 +7,27 @@ processing, and for visualising information.
 Note:   any user input/output should be done using the appropriate functions in the module 'tui'
         any processing should be done using the appropriate functions in the module 'process'
         any visualisation should be done using the appropriate functions in the module 'visual'
-"""
 
+'''
 
 # Task 10: Import required modules
 # TODO: Your code here
-tui.welcome()
+import tui
 
-"""
+
+
+
 # Task 11: Create an empty list named 'covid_records'.
 # This will be used to store the data read from the source data file.
 # TODO: Your code here
+covid_records = []
 
 
 def run():
     # Task 12: Call the function welcome of the module 'tui'.
     # This will display our welcome message when the program is executed.
     # TODO: Your code here
+    tui.welcome()
 
     # Task 13: Load the data.
     # - Use the appropriate function in the module 'tui' to display a message to indicate that the data loading
@@ -33,6 +37,7 @@ def run():
     # - Use the appropriate functions in the module 'tui' to display a message to indicate how many records have
     # been loaded and that the data loading operation has completed.
     # TODO: Your code here
+    
 
     while True:
         # Task 14: Using the appropriate function in the module 'tui', display a menu of options
@@ -122,4 +127,3 @@ def run():
 
 if __name__ == "__main__":
     run()
-"""
