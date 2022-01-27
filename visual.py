@@ -35,3 +35,52 @@ def pi_chart_conf_cases(data):
     plt.legend()
     #show plt
     plt.show()
+
+def pi_chart_top_5_death_countries(data):
+    #reverse method doesen't return any value and it updates the existing list!
+    #lambda is anonymous function(that is defined without a name) and can take any number of arguments, but can only have one expression!
+    data = sorted(data, key =lambda l:l[3], reverse=True)
+    countries = []
+    cases_count = []
+    c = 0
+    for i in data:
+        countries.append(i[0])
+        cases_count.append(i[3])
+        c+=1
+        if c == 5:
+            break
+        #creating plot
+        plt.figure(figsize = (10,7))
+        #plt.legend()
+        plt.pie(cases_count, lables = countries, autopct = "%1.1f%%")
+        #plt.axis("equal")
+        #show plt
+        plt.show()
+
+    def visualization(data, name = None):
+        if name == None:
+            pass
+    #     else:
+    #         fig = plt.figure(figsize = (7,5))
+    #         axes = fig.add_subplot(1,1,1)
+    #         axes.set_ylim(0, 300)
+    #         palette = ["blue", "red", "green", "darkorange", "maroon", "black"]
+    #         y1, y2, y3, y4, y5, y6 = [], [], [], [], [], []
+    #
+    #         plt.title("Bar Chart Animation")
+    #         animation = FuncAnimation(fig, animation_function, interval = 50)
+    #         plt.show()
+    #
+    # def animation_function(i):
+    #     y1 = i
+    #     y2 = 5 *i
+    #     y3 = 3* i
+    #     y4 = 2 *i
+    #     y5 = 6 * i
+    #     y6 = 3 * i
+    #
+    #     plt.xlabel("Country")
+    #     plt.ylable("GDP of Country")
+    #
+    #     plt.bar(["India", "China", "Germany", "USA", "Canada", "UK"], [y1, y2, y3, y4, y5, y6], color = palette)
+

@@ -213,6 +213,7 @@ def run():
         # abstraction and inheritance.  You should create suitable classes with appropriate methods.
         # You should use these to write the records (either all or only those for a specific country/region) to a JSON file.
         # TODO: Your code here
+        
 
 
         # Task 26: Check if the user selected the option for exiting the program.
@@ -226,5 +227,5 @@ def run():
 
 
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
     #run()
