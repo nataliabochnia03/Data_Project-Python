@@ -191,6 +191,14 @@ def run():
             elif menu == 3:
                 menu3 = menu(3)
                 #['[1]All Data', [2] Data for Specific Country/Region']
+                if menu3 ==1:
+                    visualization(covid_records)
+                if menu3 ==2:
+                    name = input("Enter country name for which you want to visualize graph")
+                    visualization(covid_records, name)
+            progress("data visualization operation", 100)
+
+
 
         
         # Task 25: Check if the user selected the option for exporting data.  If so, then do the following:
@@ -206,16 +214,17 @@ def run():
         # You should use these to write the records (either all or only those for a specific country/region) to a JSON file.
         # TODO: Your code here
 
+
         # Task 26: Check if the user selected the option for exiting the program.
         # If so, then break out of the loop
         # TODO: Your code here
+
 
         # Task 27: If the user selected an invalid option then use the appropriate function of the
         # module tui to display an error message
         # TODO: Your code here
 
-        pass  # can remove
 
 
-#if __name__ == "__main__":
+if __name__ == "__main__":
     #run()
