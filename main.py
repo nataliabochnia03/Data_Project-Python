@@ -213,19 +213,30 @@ def run():
         # abstraction and inheritance.  You should create suitable classes with appropriate methods.
         # You should use these to write the records (either all or only those for a specific country/region) to a JSON file.
         # TODO: Your code here
-        
+        elif menu0 == 3:
+            progress("export operation", 0)
+            #menu3 = menu (3)
+            #code
+            progress("export operation", 100)
+
 
 
         # Task 26: Check if the user selected the option for exiting the program.
         # If so, then break out of the loop
         # TODO: Your code here
+        elif menu0 ==4:
+            print("Good Bye:)")
+            break
 
 
         # Task 27: If the user selected an invalid option then use the appropriate function of the
         # module tui to display an error message
         # TODO: Your code here
+        else:
+            error("Wrong Input, Select from the given option.")
+            #pass #can remove
 
 
 
 #if __name__ == "__main__":
-    #run()
+    run()
