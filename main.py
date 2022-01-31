@@ -14,8 +14,10 @@ Note:   any user input/output should be done using the appropriate functions in 
 # TODO: Your code here
 
 import csv
-from tui import *
+from tui import * #this import helped us to use functions from TUI.py file
 from process import *
+from visual import pi_chart_conf_cases, pi_chart_top_5_death_countries, visualization
+from json import *
 
 
 
@@ -39,7 +41,7 @@ def run():
     # - Use the appropriate functions in the module 'tui' to display a message to indicate how many records have
     # been loaded and that the data loading operation has completed.
     # TODO: Your code here
-    progress("data", 0)
+    progress("data loading", 0)
     file_name = "data//covid_19_data.csv"
     total_no_of_record = 0
     #try-except statemens. "Used for exception handeling. If no errors are found in the try block, control flow moves to the statements after the except block.
@@ -62,24 +64,19 @@ def run():
         csv_reader = csv.reader(csv_file, delimiter=',')
         i = -1
         for row in csv_reader:
-            # while True
-            # while i > -1:
-            # print(row)
+
             if i > -1:
-            #print(row)
-            # exit()
-            covid_records.append(
-                [int(row[0]), row[1], row[2], row[3], row[4], int(row[5]), int(row[6]), int(row[7])])
-            progress('data loading', round((i / total_no_of_record) * 100, 2))
-            # += operator, equivalent to: i = i + 1
-            i += 1
-            progress('data loading', 100)
+                #print(row)
+                # exit()
+                covid_records.append([int(row[0]), row[1], row[2], row[3], row[4], int(row[5]), int(row[6]), int(row[7])])
+                progress('data loading', round((i/total_no_of_record) * 100, 2))
+            i+=1
+        progress('data loading', 100)
 
-            total_records(total_no_of_record)
-
-        # print('l:',len(covid_records))
-        # print(covid_records)
-        # return
+    total_records(total_no_of_record)
+    # print('l:',len(covid_records))
+    # print(covid_records)
+    # return
 
     while True:
         # Task 14: Using the appropriate function in the module 'tui', display a menu of options
@@ -192,9 +189,9 @@ def run():
                 menu3 = menu(3)
                 #['[1]All Data', [2] Data for Specific Country/Region']
                 if menu3 ==1:
-                    visualization(covid_records)
+                    visualization(covid_records, name = 'all')
                 if menu3 ==2:
-                    name = input("Enter country name for which you want to visualize graph")
+                    name = input("Enter country name for which you want to Visualize Graph")
                     visualization(covid_records, name)
             progress("data visualization operation", 100)
 
@@ -214,18 +211,32 @@ def run():
         # You should use these to write the records (either all or only those for a specific country/region) to a JSON file.
         # TODO: Your code here
         elif menu0 == 3:
-            progress("export operation", 0)
-            #menu3 = menu (3)
-            #code
+            progress('export operation', 0)
+            menu3 = menu (3)
+                # ['[1] All Data', '[2] Data for Specific Country/Region']
+            if menu3 ==1 :
+                data = covid_records
+                with open('all record.json', 'w', encoding='utf-8') as f:
+                    dump(data, f, ensure_ascii=False, indent=4)
+            if menu3 ==2:
+                data = []
+                name= input('Enter Country Name: ')
+
+                for d in covid_records:
+                    if d[3] == name:
+                        data.append(d)
+
+                with open (f'record {name},json', 'w', encoding='utf-8') as f:
+                    dump(data, f, ensure_ascii=False, indent=4)
+
+            # code
             progress("export operation", 100)
-
-
 
         # Task 26: Check if the user selected the option for exiting the program.
         # If so, then break out of the loop
         # TODO: Your code here
         elif menu0 ==4:
-            print("Good Bye:)")
+            print('Good Bye:)')
             break
 
 
@@ -238,5 +249,5 @@ def run():
 
 
 
-#if __name__ == "__main__":
+if __name__ == "__main__":
     run()

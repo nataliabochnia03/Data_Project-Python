@@ -23,7 +23,7 @@ def welcome():
     #print("-----------------------")
     #print("COVID-19 (January) Data")
     #print("-----------------------")
-    #I found a nicer looking solution for this one, by using the "len" function, which returns the number of characters in the string
+
 
     title = 'COVID-19 (January) Data'
     print('-'*len(title) ,'\n'+title ,'\n'+'-'*len(title) )
@@ -107,17 +107,21 @@ def menu(variant=0):
     :return: nothing if invalid selection otherwise an integer for a valid selection
     """
     # TODO: Your code here
-    print("Choose one of the option: \n1 Process Data \n2 Visualise Data \n3 Export Data \n4 Exit")
-    variant = int(input())
-    if variant == 1:
-        print("[1] Record by Serial Number", "[2] Records by Observation Date", "[3] Group Records by Country/Region",
-              "[4] Summarise Records")
+    menu = []
+    if variant == 0:
+        menu = ["[1] Process Data", "[2] Visualise Data", "[3] Export Data", "[4] Exit"]
+    elif variant == 1:
+        menu = ["[1] Record by Serial Number", "[2] Records by Observation Date", "[3] Group Records by Country/Region", "[4] Summarise Records"]
     elif variant == 2:
-        print("[1] Country/Region Pie Chart", "[2] Observations Chart", "[3] Animated Summary")
-    elif variant == 3:
-        print("[1] All Data", "[2] Data for Specific Country/Region")
+        menu = ["[1] Country/Region Pie Chart", "[2] Observations Chart", "[3] Animated Summary"]
+    elif variant ==3:
+        menu = ["[1] All Data", "[2] Data for Specific Country/Region"]
     else:
-        print("Error! Option not found.")
+        print("Error, Menu not found. ")
+        return
+    print(*menu, sep="\n")
+    selection = input("Select a menu:")
+
     #Trying newly learned "try", "expect" statement.
     #At this point unnecessary complicated everything for myself by doing this.
     #This code kind of works but it doesn't display the proper response.
@@ -215,7 +219,7 @@ def observation_dates():
     #dts = str(input("Enter dates (dd/mm/yyyy):")).split()
     dts.append(dat)
 
-    print(dts)
+    return dts
 
 def display_record(record, cols=None):
     """

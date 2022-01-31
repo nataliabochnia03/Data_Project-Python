@@ -25,6 +25,8 @@ The required functions are as follows:
  
 """
 from tui import *
+from numpy import reciprocal
+
 # TODO: Your code here
 # functions
 # 01
@@ -42,41 +44,32 @@ def get_record_by_serial_number(list_of_records):
         #print(record)
         return record
 # 03
-def get_records_by_observation_dates(list_of_records):
-    date = None
+def get_records_by_observation_dates(list_of_records, date = None):
+    #date = None
     result = []
     while not date:
         date = observation_dates()
     for record in list_of_records:
         if record[1].strip() in date:
             result.append(record)
-    #print(record)
-    return record
-# 04
+    return result
+# 4
+# def key_fun
 def get_records_grouped_by_country_region(list_of_records):
-    places_data = {}
-    contries = []
-    for data in list_of_records:
-        if (data[2], data[3]) not in places_data.keys():
-            places_data[(data[2], data[3])] = {"total_conf_cases" : 0, "total deaths": 0, "total_recoveries": 0}
-        if data[3] not in contries:
-            contries.append(data[3])
-        places_data[(data[2], data[3])]["total_conf_cases"] = max(places_data[(data[2], data[3])])
+    return sorted(list_of_records, key=lambda l:l[3])
 
 
 def get_summary_of_records(list_of_records):
     places_data = {}
-    contries = []
+    countries = []
     for data in list_of_records:
         if (data[2], data[3]) not in places_data.keys():
             places_data[(data[2], data[3])] = {'total_conf_cases': 0, 'total_deaths': 0, 'total_recoveries': 0}
-        if data[3] not in contries:
-            contries.append(data[3])
-        places_data[(data[2], data[3])]['total_conf_cases'] = max(places_data[(data[2], data[3])]['total_conf_cases'],
-                                                                  data[5])
+        if data[3] not in countries:
+            countries.append(data[3])
+        places_data[(data[2], data[3])]['total_conf_cases'] = max(places_data[(data[2], data[3])]['total_conf_cases'],data[5])
         places_data[(data[2], data[3])]['total_deaths'] = max(places_data[(data[2], data[3])]['total_deaths'], data[6])
-        places_data[(data[2], data[3])]['total_recoveries'] = max(places_data[(data[2], data[3])]['total_recoveries'],
-                                                                  data[7])
+        places_data[(data[2], data[3])]['total_recoveries'] = max(places_data[(data[2], data[3])]['total_recoveries'],data[7])
 
     # print(places_data)
     result = {}
@@ -92,4 +85,17 @@ def get_summary_of_records(list_of_records):
     for k, v in result.items():
         ret.append([k, v['total_conf_cases'], v['total_deaths'], v['total_recoveries']])
     return ret
+
+#to get total number of conf death and recovery cases
+
+def get_total_of_records(list_of_records):
+    total_conf_cases = 0
+    total_deaths = 0
+    total_recoveries = 0
+
+    for record in list_of_records:
+        total_recoveries += int(record[-1])
+        total_deaths += int(record[-2])
+        total_conf_cases += int(record[-3])
+    return (total_conf_cases,total_deaths,total_recoveries)
 
